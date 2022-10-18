@@ -72,12 +72,27 @@ class _TarefaState extends State<Tarefa> {
                         height: 100,
                         child: Image.network(widget.imagem,fit: BoxFit.cover,),
                       ),
-                      Container(
-                          width: 200,
-                          child: Text(
-                            widget.nome,
-                            style: TextStyle(fontSize: 24),
-                          )),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              width: 200,
+                              child: Text(
+                                widget.nome,
+                                style: TextStyle(fontSize: 24),
+                              )),
+                          Row(
+                            children: [
+                              Icon(Icons.star, size: 15,color: Colors.orange,),
+                              Icon(Icons.star, size: 15,color: Colors.orange,),
+                              Icon(Icons.star, size: 15,color: Colors.orange,),
+                              Icon(Icons.star, size: 15,color: Colors.orange,),
+                              Icon(Icons.star, size: 15,color: Colors.orange,),
+                            ],
+                          ),
+                        ],
+                      ),
                       Container(
                         height: 52,
                         width: 52,
