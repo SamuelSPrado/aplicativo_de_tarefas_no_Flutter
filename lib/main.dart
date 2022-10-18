@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Tarefa('Ler'),
-            Tarefa('Estudar'),
-            Tarefa('Aprender Flutter'),
-            Tarefa('Jogar'),
-            Tarefa('Lavar louça'),
+            Tarefa('Ler', ''),
+            Tarefa('Estudar', ''),
+            Tarefa('Aprender Flutter', ''),
+            Tarefa('Jogar', ''),
+            Tarefa('Lavar louça', ''),
           ],
         ),
         floatingActionButton: FloatingActionButton(onPressed: () {}),
@@ -36,8 +36,9 @@ class MyApp extends StatelessWidget {
 
 class Tarefa extends StatefulWidget {
   final String nome;
+  final String imagem;
 
-  const Tarefa(this.nome, {Key? key}) : super(key: key);
+  const Tarefa(this.nome,this.imagem, {Key? key}) : super(key: key);
 
   @override
   State<Tarefa> createState() => _TarefaState();
@@ -69,6 +70,7 @@ class _TarefaState extends State<Tarefa> {
                         color: Colors.black26,
                         width: 72,
                         height: 100,
+                        child: Image.network(widget.imagem,fit: BoxFit.cover,),
                       ),
                       Container(
                           width: 200,
