@@ -44,6 +44,7 @@ class Tarefa extends StatefulWidget {
 
 class _TarefaState extends State<Tarefa> {
   int nivel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -85,9 +86,27 @@ class _TarefaState extends State<Tarefa> {
                     ],
                   ),
                 ),
-                Text(
-                  'Nível: $nivel',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: LinearProgressIndicator(
+                          color: Colors.white,
+                          value: nivel/10,
+                        ),
+                        width: 200,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text(
+                        'Nível: $nivel',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             )
