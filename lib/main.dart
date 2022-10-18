@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
+          leading: Container(),
           title: Text('Tarefas'),
         ),
         body: ListView(
@@ -75,14 +76,25 @@ class _TarefaState extends State<Tarefa> {
                             widget.nome,
                             style: TextStyle(fontSize: 24),
                           )),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              nivel++;
-                            });
-                            print(nivel);
-                          },
-                          child: Icon(Icons.upgrade))
+                      Container(
+                        height: 52,
+                        width: 52,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                nivel++;
+                              });
+                              print(nivel);
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Icon(Icons.upgrade),
+                                Text('UP', style: TextStyle(fontSize: 12),),
+                              ],
+                            )),
+                      )
                     ],
                   ),
                 ),
