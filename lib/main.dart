@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_projeto_tarefas/tela_inicial.dart';
+import 'package:primeiro_projeto_tarefas/screens/tela_inicial.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +15,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: TelaInicial(),
+      home: const TelaInicial(),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_projeto_tarefas/tarefas.dart';
+import 'package:primeiro_projeto_tarefas/components/tarefas.dart';
 
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
@@ -16,13 +16,13 @@ class _TelaInicialState extends State<TelaInicial> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        title: Text('Tarefas'),
+        title: const Text('Tarefas'),
       ),
       body: AnimatedOpacity(
         opacity: opacidade ? 1 : 0,
-        duration: Duration(milliseconds: 1000),
+        duration: const Duration(milliseconds: 1000),
         child: ListView(
-          children: [
+          children: const [
             Tarefa('Ler', '', 2),
             Tarefa('Estudar', '', 3),
             Tarefa('Aprender Flutter', '', 5),
@@ -38,7 +38,7 @@ class _TelaInicialState extends State<TelaInicial> {
             opacidade = !opacidade;
           });
         },
-        child: Icon(Icons.remove_red_eye),
+        child: const Icon(Icons.remove_red_eye),
       ),
     );
   }
