@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool opacidade = true;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +26,28 @@ class MyApp extends StatelessWidget {
           leading: Container(),
           title: Text('Tarefas'),
         ),
-        body: ListView(
-          children: [
-            Tarefa('Ler', '', 2),
-            Tarefa('Estudar', '', 3),
-            Tarefa('Aprender Flutter', '', 5),
-            Tarefa('Jogar', '', 1),
-            Tarefa('Lavar louça', '', 4),
-            Tarefa('Academia', '', 5),
-          ],
+        body:
+        AnimatedOpacity(
+          opacity: opacidade ? 1 : 0,
+          duration: Duration(milliseconds: 1000),
+          child: ListView(
+            children: [
+              Tarefa('Ler', '', 2),
+              Tarefa('Estudar', '', 3),
+              Tarefa('Aprender Flutter', '', 5),
+              Tarefa('Jogar', '', 1),
+              Tarefa('Lavar louça', '', 4),
+              Tarefa('Academia', '', 5),
+            ],
+          ),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () {}),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              opacidade = ! opacidade;
+            });
+        },
+        child: Icon(Icons.remove_red_eye),),
       ),
     );
   }
