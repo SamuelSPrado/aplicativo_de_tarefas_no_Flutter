@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_projeto_tarefas/dificuldade.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -26,8 +27,7 @@ class _MyAppState extends State<MyApp> {
           leading: Container(),
           title: Text('Tarefas'),
         ),
-        body:
-        AnimatedOpacity(
+        body: AnimatedOpacity(
           opacity: opacidade ? 1 : 0,
           duration: Duration(milliseconds: 1000),
           child: ListView(
@@ -44,10 +44,11 @@ class _MyAppState extends State<MyApp> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              opacidade = ! opacidade;
+              opacidade = !opacidade;
             });
-        },
-        child: Icon(Icons.remove_red_eye),),
+          },
+          child: Icon(Icons.remove_red_eye),
+        ),
       ),
     );
   }
@@ -58,7 +59,8 @@ class Tarefa extends StatefulWidget {
   final String imagem;
   final int dificuldade;
 
-  const Tarefa(this.nome,this.imagem,this.dificuldade, {Key? key}) : super(key: key);
+  const Tarefa(this.nome, this.imagem, this.dificuldade, {Key? key})
+      : super(key: key);
 
   @override
   State<Tarefa> createState() => _TarefaState();
@@ -76,9 +78,8 @@ class _TarefaState extends State<Tarefa> {
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                color: Colors.green
-              ),
+                  borderRadius: BorderRadius.circular(4.0),
+                  color: Colors.green),
               height: 140,
             ),
             Column(
@@ -100,8 +101,11 @@ class _TarefaState extends State<Tarefa> {
                         width: 72,
                         height: 100,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4.0),
-                            child: Image.network(widget.imagem,fit: BoxFit.cover,)),
+                            borderRadius: BorderRadius.circular(4.0),
+                            child: Image.network(
+                              widget.imagem,
+                              fit: BoxFit.cover,
+                            )),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -113,14 +117,8 @@ class _TarefaState extends State<Tarefa> {
                                 widget.nome,
                                 style: TextStyle(fontSize: 24),
                               )),
-                          Row(
-                            children: [
-                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 1) ? Colors.orange : Colors.yellow,),
-                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 2) ? Colors.orange : Colors.yellow,),
-                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 3) ? Colors.orange : Colors.yellow,),
-                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 4) ? Colors.orange : Colors.yellow,),
-                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 5) ? Colors.orange : Colors.yellow,),
-                            ],
+                          Dificuldade(
+                            dificuldadeDoLevel: widget.dificuldade,
                           ),
                         ],
                       ),
@@ -139,7 +137,10 @@ class _TarefaState extends State<Tarefa> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Icon(Icons.upgrade),
-                                Text('UP', style: TextStyle(fontSize: 12),),
+                                Text(
+                                  'UP',
+                                  style: TextStyle(fontSize: 12),
+                                ),
                               ],
                             )),
                       )
@@ -154,8 +155,9 @@ class _TarefaState extends State<Tarefa> {
                       child: Container(
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: (widget.dificuldade > 0) ?
-                          (nivel / widget.dificuldade)/10 : 1,
+                          value: (widget.dificuldade > 0)
+                              ? (nivel / widget.dificuldade) / 10
+                              : 1,
                         ),
                         width: 200,
                       ),
@@ -177,3 +179,5 @@ class _TarefaState extends State<Tarefa> {
     );
   }
 }
+
+
