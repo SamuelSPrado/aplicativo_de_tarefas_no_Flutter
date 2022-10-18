@@ -15,6 +15,18 @@ class Tarefa extends StatefulWidget {
 
 class _TarefaState extends State<Tarefa> {
   int nivel = 0;
+  int dificultyCounter = 0;
+
+  Color colorSet() {
+    if (dificultyCounter == 1) {
+      return const Color.fromARGB(255, 19, 167, 0);
+    } else if (dificultyCounter == 2) {
+      return const Color.fromARGB(255, 207, 149, 67);
+    } else if (dificultyCounter >= 3) {
+      return const Color.fromARGB(255, 43, 48, 108);
+    }
+    return Colors.white54;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +36,7 @@ class _TarefaState extends State<Tarefa> {
         children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                color: Colors.green),
+                borderRadius: BorderRadius.circular(4.0), color: Colors.green),
             height: 140,
           ),
           Column(
@@ -33,7 +44,7 @@ class _TarefaState extends State<Tarefa> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4.0),
-                  color: Colors.white,
+                  color: colorSet(),
                 ),
                 height: 100,
                 child: Row(
@@ -48,7 +59,7 @@ class _TarefaState extends State<Tarefa> {
                       height: 100,
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(4.0),
-                          child: Image.network(
+                          child: Image.asset(
                             widget.imagem,
                             fit: BoxFit.cover,
                           )),
@@ -75,6 +86,10 @@ class _TarefaState extends State<Tarefa> {
                           onPressed: () {
                             setState(() {
                               nivel++;
+                              if (((nivel / widget.dificuldade) / 10) >= 1) {
+                                dificultyCounter++;
+                                nivel = 0;
+                                  }
                             });
                           },
                           child: Column(

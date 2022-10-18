@@ -23,12 +23,14 @@ class _TelaInicialState extends State<TelaInicial> {
         duration: const Duration(milliseconds: 1000),
         child: ListView(
           children: const [
-            Tarefa('Ler', '', 2),
-            Tarefa('Estudar', '', 3),
-            Tarefa('Aprender Flutter', '', 5),
-            Tarefa('Jogar', '', 1),
-            Tarefa('Lavar louça', '', 4),
-            Tarefa('Academia', '', 5),
+            Tarefa('Ler', 'assets/images/ler.jpg', 2),
+            Tarefa('Estudar', 'assets/images/estudar.png', 3),
+            Tarefa('Aprender Flutter', 'assets/images/aprender_flutter.png', 5),
+            Tarefa('Jogar', 'assets/images/jogar.jpg', 1),
+            Tarefa('Academia', 'assets/images/academia.png', 5),
+            SizedBox(
+              height: 65,
+            ),
           ],
         ),
       ),

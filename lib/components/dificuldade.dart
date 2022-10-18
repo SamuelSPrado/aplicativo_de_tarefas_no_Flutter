@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Dificuldade extends StatelessWidget {
-
   final int dificuldadeDoLevel;
 
   const Dificuldade({
