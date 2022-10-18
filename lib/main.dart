@@ -21,11 +21,12 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Tarefa('Ler', ''),
-            Tarefa('Estudar', ''),
-            Tarefa('Aprender Flutter', ''),
-            Tarefa('Jogar', ''),
-            Tarefa('Lavar louça', ''),
+            Tarefa('Ler', '', 2),
+            Tarefa('Estudar', '', 3),
+            Tarefa('Aprender Flutter', '', 5),
+            Tarefa('Jogar', '', 1),
+            Tarefa('Lavar louça', '', 4),
+            Tarefa('Academia', '', 5),
           ],
         ),
         floatingActionButton: FloatingActionButton(onPressed: () {}),
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
 class Tarefa extends StatefulWidget {
   final String nome;
   final String imagem;
+  final int dificuldade;
 
-  const Tarefa(this.nome,this.imagem, {Key? key}) : super(key: key);
+  const Tarefa(this.nome,this.imagem,this.dificuldade, {Key? key}) : super(key: key);
 
   @override
   State<Tarefa> createState() => _TarefaState();
@@ -84,11 +86,11 @@ class _TarefaState extends State<Tarefa> {
                               )),
                           Row(
                             children: [
-                              Icon(Icons.star, size: 15,color: Colors.orange,),
-                              Icon(Icons.star, size: 15,color: Colors.orange,),
-                              Icon(Icons.star, size: 15,color: Colors.orange,),
-                              Icon(Icons.star, size: 15,color: Colors.orange,),
-                              Icon(Icons.star, size: 15,color: Colors.orange,),
+                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 1) ? Colors.orange : Colors.yellow,),
+                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 2) ? Colors.orange : Colors.yellow,),
+                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 3) ? Colors.orange : Colors.yellow,),
+                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 4) ? Colors.orange : Colors.yellow,),
+                              Icon(Icons.star, size: 15,color: (widget.dificuldade >= 5) ? Colors.orange : Colors.yellow,),
                             ],
                           ),
                         ],
@@ -123,7 +125,8 @@ class _TarefaState extends State<Tarefa> {
                       child: Container(
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: nivel/10,
+                          value: (widget.dificuldade > 0) ?
+                          (nivel / widget.dificuldade)/10 : 1,
                         ),
                         width: 200,
                       ),
