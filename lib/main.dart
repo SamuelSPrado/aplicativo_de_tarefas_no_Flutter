@@ -57,22 +57,33 @@ class _TarefaState extends State<Tarefa> {
         child: Stack(
           children: [
             Container(
-              color: Colors.green,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4.0),
+                color: Colors.green
+              ),
               height: 140,
             ),
             Column(
               children: [
                 Container(
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4.0),
+                    color: Colors.white,
+                  ),
                   height: 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.black26,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4.0),
+                          color: Colors.black26,
+                        ),
                         width: 72,
                         height: 100,
-                        child: Image.network(widget.imagem,fit: BoxFit.cover,),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4.0),
+                            child: Image.network(widget.imagem,fit: BoxFit.cover,)),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
